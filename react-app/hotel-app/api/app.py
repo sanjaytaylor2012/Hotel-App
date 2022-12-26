@@ -15,7 +15,6 @@ CORS(app)
 
 @app.route('/api', methods=['POST', 'GET'])
 def predict():
-    print("hello")
 
     months = {
         "january" : 1,

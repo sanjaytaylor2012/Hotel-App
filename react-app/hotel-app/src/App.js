@@ -10,7 +10,8 @@ function App() {
     <>
       <Container className="my-4">
         <Stack direction="horizontal" gap="4" className="mb-4">
-          <h1>Customer Predictor</h1>
+          {/* hospitality online ticketing evaluation and logistics */}
+          <h1>H.O.T.E.L.</h1>
           <Button
             variant={addCustomer ? "outline-primary" : "primary"}
             onClick={() => {
