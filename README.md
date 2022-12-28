@@ -13,18 +13,27 @@ The purpose of this project was to create a machine learning algorithm to predic
 I built the algorithm using a Jupyter Notebook and libraries such as the Natural Learning Toolkit (NLTK) library, pandas, regular expressions (re), Sci-kit Learn, and the string library. After cleaning and testing various parameter settings with GridSearchCV, I ended up with 80% accuracy. Then, I created the frontend with React. I used React-bootstrap for the CSS elements and then moved on to the backend. This was created using Flask. I created an api to process the data that the user enters and predict whether the customer would show up or not. Then, I integrated an inventory management system that allows the hotel to manage inventory of various products. Also, I integrated a history log of when customers used specific products.
 
 Adding Customers:
+
 <img src="Home.png">
 
+
 Viewing customer information as well as predicted status:
+
 <img src="customers.png">
 
+
 Adding an item to inventory:
+
 <img src="itemModal.png">
 
+
 Adding an expense to inventory:
+
 <img src="expense.png">
 
+
 Inventory Dashboard:
+
 <img src="inventory.png">
 
 
