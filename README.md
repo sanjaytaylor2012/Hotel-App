@@ -1,4 +1,4 @@
-#H.O.T.E.L.
+H.O.T.E.L.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
