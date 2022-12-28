@@ -15,10 +15,12 @@ I built the algorithm using a Jupyter Notebook and libraries such as the Natural
 Example images:
 
 <img src="itemModal.png">
-<img src="expenses.png">
+<img src="expense.png">
 <img src="item.png">
+<img src="inventory.png">
+<img src="customers.png">
 <img src="Home.png">
-<img src="customer.png">
+
 
 
 
