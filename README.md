@@ -14,9 +14,13 @@ I built the algorithm using a Jupyter Notebook and libraries such as the Natural
 
 Example images:
 
-<img src="positive.png">
-<img src="negative.png">
-<img src="nuetral.png">
+<img src="itemModal.png">
+<img src="expenses.png">
+<img src="item.png">
+<img src="Home.png">
+<img src="customer.png">
+
+
 
 
 
