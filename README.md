@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Inspiration
-In busy holiday seasons, hotel rooms sell like hotcakes. Each room is worth a lot of money and no-shows can be damaging to a hotel's revenue. This was my inspiration for creating H.O.T.E.L. (Hospitality Online Ticketing Evaluation and Logistics).                                                (not accurate) =>
+In busy holiday seasons, hotel rooms sell like hotcakes. Each room is worth a lot of money and no-shows can be damaging to a hotel's revenue. This was my inspiration for creating H.O.T.E.L. (Hospitality Online Ticketing Evaluation and Logistics).                                                        (not accurate) =>
 
 ## Purpose
 The purpose of this project was to create a machine learning algorithm to predict whether customers would show up and then integrate that into an entire Hotel Management application that can track customer information as well as inventory and customer use history.
