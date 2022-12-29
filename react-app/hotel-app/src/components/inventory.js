@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Container, Stack, Table } from "react-bootstrap";
-import { CustomersProvidor, useCustomers } from "../contexts/customersContext";
+import { useCustomers } from "../contexts/customersContext";
 import { AddExpenseModal } from "./AddExpenseModal";
 import { AddInventoryModal } from "./addInventoryModal";
 import { InventoryCard } from "./InventoryCard";
