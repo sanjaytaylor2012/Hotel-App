@@ -5,9 +5,13 @@ import { AddExpenseModal } from "./AddExpenseModal";
 import { AddInventoryModal } from "./addInventoryModal";
 import { InventoryCard } from "./InventoryCard";
 import { v4 as uuidV4 } from "uuid";
+import { RemoveInventoryModal } from "./RemoveInventoryModal";
 
 export function Inventory() {
   const [showAddInventoryModal, setShowAddInventoryModal] = useState(false);
+  const [showRemoveInventoryModal, setShowRemoveInventoryModal] =
+    useState(false);
+
   const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
   const { inventory, expenses } = useCustomers();
 
@@ -16,6 +20,12 @@ export function Inventory() {
       <Stack direction="horizontal" gap="2">
         <Button onClick={() => setShowAddInventoryModal(true)} className="mb-4">
           Add Item
+        </Button>
+        <Button
+          onClick={() => setShowRemoveInventoryModal(true)}
+          className="mb-4"
+        >
+          Remove Item
         </Button>
         <Button
           variant="outline-primary"
@@ -75,6 +85,11 @@ export function Inventory() {
       <AddInventoryModal
         show={showAddInventoryModal}
         handleClose={() => setShowAddInventoryModal(false)}
+      />
+
+      <RemoveInventoryModal
+        show={showRemoveInventoryModal}
+        handleClose={() => setShowRemoveInventoryModal(false)}
       />
       <AddExpenseModal
         show={showAddExpenseModal}

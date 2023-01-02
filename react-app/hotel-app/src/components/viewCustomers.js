@@ -1,7 +1,8 @@
-import React from "react";
-import { Table } from "react-bootstrap";
+import React, { useState } from "react";
+import { Table, Button } from "react-bootstrap";
 import { useCustomers } from "../contexts/customersContext";
 import { v4 as uuidV4 } from "uuid";
+import { ManageCustomersModal } from "./ManageCustomersModal";
 
 // # df.columns = ['lead_time', 'arrival_date_month', 'stays_in_weekend_nights', 'stays_in_week_nights', 'adults',
 // # 'children', 'babies', 'is_repeated_guest', 'previous_cancellations', 'previous_bookings_not_canceled',
@@ -9,8 +10,16 @@ import { v4 as uuidV4 } from "uuid";
 
 export function ViewCustomers() {
   const { customers } = useCustomers();
+  const [showManageCustomersModal, setShowManageCustomersModal] =
+    useState(false);
   return (
     <div className="me-4">
+      <Button
+        className="mb-4"
+        onClick={() => setShowManageCustomersModal(true)}
+      >
+        Remove Customer
+      </Button>
       <Table striped bordered="true" size="sm">
         <thead>
           <tr>
@@ -45,6 +54,12 @@ export function ViewCustomers() {
           })}
         </tbody>
       </Table>
+      {showManageCustomersModal && (
+        <ManageCustomersModal
+          show={showManageCustomersModal}
+          handleClose={() => setShowManageCustomersModal(false)}
+        />
+      )}
     </div>
   );
 }

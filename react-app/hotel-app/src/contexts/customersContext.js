@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { v4 as uuidV4 } from "uuid";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const CustomersContext = React.createContext();
 
@@ -8,13 +9,25 @@ export function useCustomers() {
 }
 
 export const CustomersProvidor = ({ children }) => {
-  const [customers, setCustomers] = useState([]);
-  const [inventory, setInventory] = useState([]);
-  const [expenses, setExpenses] = useState([]);
+  const [customers, setCustomers] = useLocalStorage("customers", []);
+  const [inventory, setInventory] = useLocalStorage("inventory", []);
+  const [expenses, setExpenses] = useLocalStorage("expenses", []);
 
   function addCustomers({ answers, status, name }) {
     setCustomers((prevCustomers) => {
       return [...prevCustomers, { id: uuidV4(), answers, status, name }];
+    });
+  }
+
+  function removeCustomer({ name }) {
+    setCustomers((prevCustomers) => {
+      return [...prevCustomers.filter((customer) => customer.name !== name)];
+    });
+  }
+
+  function removeInventory({ name }) {
+    setInventory((prevInventory) => {
+      return [...prevInventory.filter((item) => item.name !== name)];
     });
   }
 
@@ -40,7 +53,9 @@ export const CustomersProvidor = ({ children }) => {
         inventory,
         addInventory,
         addExpense,
+        removeCustomer,
         expenses,
+        removeInventory,
       }}
     >
       {children}

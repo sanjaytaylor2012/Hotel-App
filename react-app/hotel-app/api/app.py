@@ -13,7 +13,7 @@ CORS(app)
 
 
 
-@app.route('/api', methods=['POST', 'GET'])
+@app.route('/api', methods=['POST'])
 def predict():
 
     months = {
