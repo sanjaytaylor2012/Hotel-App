@@ -15,12 +15,13 @@ export function ViewCustomers() {
   return (
     <div className="me-4">
       <Button
-        className="mb-4"
+        variant="outline-primary"
+        className="mb-4 mt-4 ms-4"
         onClick={() => setShowManageCustomersModal(true)}
       >
         Remove Customer
       </Button>
-      <Table striped bordered="true" size="sm">
+      <Table striped bordered="true" size="sm" className="ms-2 me-2">
         <thead>
           <tr>
             <th>Name</th>
@@ -43,12 +44,12 @@ export function ViewCustomers() {
         <tbody>
           {customers.map((customer) => {
             return (
-              <tr>
-                <td key={uuidV4()}>{customer.name}</td>
+              <tr key={uuidV4()}>
+                <td>{customer.name}</td>
                 {customer.answers.map((answer) => {
-                  return <td key={uuidV4()}>{answer}</td>;
+                  return <td>{answer}</td>;
                 })}
-                <td key={uuidV4()}>{customer.status}</td>
+                <td>{customer.status}</td>
               </tr>
             );
           })}

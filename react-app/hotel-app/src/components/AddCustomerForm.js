@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useCustomers } from "../contexts/customersContext";
 
@@ -23,7 +23,6 @@ export function AddCustomerForm() {
   const bookingChangesRef = useRef();
   const parkingSpotsRef = useRef();
   const specialRequestsRef = useRef();
-  const [output, setOutput] = useState();
 
   async function Submit(event) {
     event.preventDefault();
@@ -52,7 +51,6 @@ export function AddCustomerForm() {
       .then((data) => {
         return data["prediction"];
       });
-    setOutput(response);
 
     addCustomers({
       name: nameRef.current.value,
@@ -76,141 +74,155 @@ export function AddCustomerForm() {
   }
 
   return (
-    <Form className="mt-4" onSubmit={Submit}>
-      <Form.Group className="mb-3">
-        <Form.Label>Customer name:</Form.Label>
-        <Form.Control key={nameRef} ref={nameRef} type="text" required />
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>Days between booking and arrival:</Form.Label>
-        <Form.Control
-          ref={leadTimeRef}
-          type="number"
-          required
-          min={0}
-          step={1}
-        />
-      </Form.Group>
+    <div style={{ width: "800px", margin: "0 auto" }}>
+      <Form className="mt-4" onSubmit={Submit}>
+        <Form.Group className="mb-3">
+          <Form.Label>Customer name:</Form.Label>
+          <Form.Control key={nameRef} ref={nameRef} type="text" required />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Days between booking and arrival:</Form.Label>
+          <Form.Control
+            ref={leadTimeRef}
+            type="number"
+            required
+            min={0}
+            step={1}
+          />
+        </Form.Group>
 
-      <Form.Group className="mb-3">
-        <Form.Label>Arrival month:</Form.Label>
-        <Form.Select ref={arrivalMonthRef} type="text" required>
-          <option className="text-secondary">Select Month</option>
-          <option>January</option>
-          <option>February</option>
-          <option>March</option>
-          <option>April</option>
-          <option>May</option>
-          <option>June</option>
-          <option>July</option>
-          <option>August</option>
-          <option>September</option>
-          <option>October</option>
-          <option>November</option>
-          <option>December</option>
-        </Form.Select>
-      </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Arrival month:</Form.Label>
+          <Form.Select ref={arrivalMonthRef} type="text" required>
+            <option className="text-secondary">Select Month</option>
+            <option>January</option>
+            <option>February</option>
+            <option>March</option>
+            <option>April</option>
+            <option>May</option>
+            <option>June</option>
+            <option>July</option>
+            <option>August</option>
+            <option>September</option>
+            <option>October</option>
+            <option>November</option>
+            <option>December</option>
+          </Form.Select>
+        </Form.Group>
 
-      <Form.Group className="mb-3">
-        <Form.Label>Weekend nights booked:</Form.Label>
-        <Form.Control
-          ref={staysInWeekendNightRef}
-          type="number"
-          required
-          min={0}
-          step={1}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>Week nights booked:</Form.Label>
-        <Form.Control
-          ref={staysInWeekNightRef}
-          type="number"
-          required
-          min={0}
-          step={1}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>Adults in party:</Form.Label>
-        <Form.Control ref={adultsRef} type="number" required min={0} step={1} />
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>Children in party:</Form.Label>
-        <Form.Control
-          ref={childrenRef}
-          type="number"
-          required
-          min={0}
-          step={1}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>Babies in party:</Form.Label>
-        <Form.Control ref={babiesRef} type="number" required min={0} step={1} />
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>Repeat guest: </Form.Label>
-        <Form.Select ref={repeatGuestRef} type="text" required>
-          <option className="text-secondary">Select Option</option>
-          <option>Yes</option>
-          <option>No</option>
-        </Form.Select>
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>Number of previous cancellation: </Form.Label>
-        <Form.Control
-          ref={previousCancellationRef}
-          type="number"
-          required
-          min={0}
-          step={1}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>Number of previous bookings not canceled:</Form.Label>
-        <Form.Control
-          ref={previousBookingsNotCanceledRef}
-          type="number"
-          required
-          min={0}
-          step={1}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>Number of booking changes: </Form.Label>
-        <Form.Control
-          ref={bookingChangesRef}
-          type="number"
-          required
-          min={0}
-          step={1}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>Number of required parking spots:</Form.Label>
-        <Form.Control
-          ref={parkingSpotsRef}
-          type="number"
-          required
-          min={0}
-          step={1}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>Number of special requests: </Form.Label>
-        <Form.Control
-          ref={specialRequestsRef}
-          type="number"
-          required
-          min={0}
-          step={1}
-        />
-      </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Weekend nights booked:</Form.Label>
+          <Form.Control
+            ref={staysInWeekendNightRef}
+            type="number"
+            required
+            min={0}
+            step={1}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Week nights booked:</Form.Label>
+          <Form.Control
+            ref={staysInWeekNightRef}
+            type="number"
+            required
+            min={0}
+            step={1}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Adults in party:</Form.Label>
+          <Form.Control
+            ref={adultsRef}
+            type="number"
+            required
+            min={0}
+            step={1}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Children in party:</Form.Label>
+          <Form.Control
+            ref={childrenRef}
+            type="number"
+            required
+            min={0}
+            step={1}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Babies in party:</Form.Label>
+          <Form.Control
+            ref={babiesRef}
+            type="number"
+            required
+            min={0}
+            step={1}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Repeat guest: </Form.Label>
+          <Form.Select ref={repeatGuestRef} type="text" required>
+            <option className="text-secondary">Select Option</option>
+            <option>Yes</option>
+            <option>No</option>
+          </Form.Select>
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Number of previous cancellation: </Form.Label>
+          <Form.Control
+            ref={previousCancellationRef}
+            type="number"
+            required
+            min={0}
+            step={1}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Number of previous bookings not canceled:</Form.Label>
+          <Form.Control
+            ref={previousBookingsNotCanceledRef}
+            type="number"
+            required
+            min={0}
+            step={1}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Number of booking changes: </Form.Label>
+          <Form.Control
+            ref={bookingChangesRef}
+            type="number"
+            required
+            min={0}
+            step={1}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Number of required parking spots:</Form.Label>
+          <Form.Control
+            ref={parkingSpotsRef}
+            type="number"
+            required
+            min={0}
+            step={1}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Number of special requests: </Form.Label>
+          <Form.Control
+            ref={specialRequestsRef}
+            type="number"
+            required
+            min={0}
+            step={1}
+          />
+        </Form.Group>
 
-      <Button className="mb-4" variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
+        <Button className="mb-4" variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
+    </div>
   );
 }

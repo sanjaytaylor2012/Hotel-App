@@ -13,15 +13,21 @@ export function Inventory() {
     useState(false);
 
   const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
-  const { inventory, expenses } = useCustomers();
+  const { inventory, expenses, removeExpense } = useCustomers();
+
+  function handleRemoveExpenseSubmit({ id, amount, inventoryId }) {
+    console.log(id);
+    removeExpense({ id: id, amount: amount, inventoryId: inventoryId });
+  }
 
   return (
     <Container>
-      <Stack direction="horizontal" gap="2">
+      <Stack direction="horizontal" gap="2" className="mt-4">
         <Button onClick={() => setShowAddInventoryModal(true)} className="mb-4">
           Add Item
         </Button>
         <Button
+          variant="outline-primary"
           onClick={() => setShowRemoveInventoryModal(true)}
           className="mb-4"
         >
@@ -63,18 +69,27 @@ export function Inventory() {
               <th>Customer</th>
               <th>Amount</th>
               <th>Item</th>
+              <th>Remove Expense</th>
             </tr>
           </thead>
           <tbody>
             {expenses.map((expense) => {
-              const item = inventory.find(
-                (item) => item.id === expense.inventoryId
-              );
               return (
                 <tr>
                   <td key={uuidV4()}>{expense.customer}</td>
                   <td>{expense.amount}</td>
-                  <td>{item.name}</td>
+                  <td>{expense.inventoryName}</td>
+                  <td
+                    onClick={() => {
+                      handleRemoveExpenseSubmit({
+                        id: expense.id,
+                        amount: expense.amount,
+                        inventoryId: expense.inventoryId,
+                      });
+                    }}
+                  >
+                    <Button>Remove Expense</Button>
+                  </td>
                 </tr>
               );
             })}

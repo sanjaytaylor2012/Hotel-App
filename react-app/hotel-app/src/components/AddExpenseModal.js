@@ -11,10 +11,14 @@ export function AddExpenseModal({ show, handleClose }) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    const item = inventory.find(
+      (item) => item.id === inventoryIdRef.current.value
+    );
     addExpense({
       customer: customerRef.current.value,
       amount: parseFloat(amountRef.current.value),
       inventoryId: inventoryIdRef.current.value,
+      inventoryName: item.name,
     });
     handleClose();
   }

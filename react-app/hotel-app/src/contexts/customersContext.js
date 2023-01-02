@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { v4 as uuidV4 } from "uuid";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
@@ -37,11 +37,24 @@ export const CustomersProvidor = ({ children }) => {
     });
   }
 
-  function addExpense({ customer, amount, inventoryId }) {
+  function addExpense({ customer, amount, inventoryId, inventoryName }) {
     const item = inventory.find((item) => item.id === inventoryId);
     item.amount += amount;
     setExpenses((prevExpenses) => {
-      return [...prevExpenses, { id: uuidV4(), customer, amount, inventoryId }];
+      return [
+        ...prevExpenses,
+        { id: uuidV4(), customer, amount, inventoryId, inventoryName },
+      ];
+    });
+  }
+
+  function removeExpense({ id, inventoryId, amount }) {
+    const item = inventory.find((item) => item.id === inventoryId);
+    if (item !== undefined && item.amount !== 0) {
+      item.amount -= amount;
+    }
+    setExpenses((prevExpenses) => {
+      return [...prevExpenses.filter((expense) => expense.id !== id)];
     });
   }
 
@@ -56,6 +69,7 @@ export const CustomersProvidor = ({ children }) => {
         removeCustomer,
         expenses,
         removeInventory,
+        removeExpense,
       }}
     >
       {children}
