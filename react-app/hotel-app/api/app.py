@@ -15,7 +15,6 @@ CORS(app)
 
 @app.route('/api', methods=['POST'])
 def predict():
-
     months = {
         "january" : 1,
         "february" : 2,
@@ -29,11 +28,9 @@ def predict():
         "october" : 10,
         "november" : 11,
         "december" : 12
-
     }
 
     text = request.get_json()
-
     print(text)
 
     text[1] = text[1].lower()
