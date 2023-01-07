@@ -58,7 +58,7 @@ You may also see any lint errors in the console.
 ### `flask run`
 
 Runs the flask backend in debug mode.
-Note: User must sign up with an OpenAI account and supply their own API key.
+
 
 If there are any issues please feel free to contact me at: sanjaytaylor2012@gmail.com
 
